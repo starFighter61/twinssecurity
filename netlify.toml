@@ -1,0 +1,9 @@
+[build]
+  base = "/"
+  publish = "twinsec_modern_final_local"
+  command = ""  # No build command for static site
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
