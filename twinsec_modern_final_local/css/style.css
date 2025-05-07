@@ -1,0 +1,686 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+/* Basic Reset & Body Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: #000;
+    color: #CCCCCC;
+}
+
+/* Container */
+.container {
+    max-width: 903px;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden; /* Prevent horizontal scroll */
+}
+
+/* Header, Sections, Footer - Backgrounds & Basic Height */
+header,
+section,
+footer {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 100%;
+    position: relative;
+}
+
+/* Specific Heights - Use min-height and allow content to expand */
+header {
+    min-height: 159px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: relative; /* Needed for hamburger positioning */
+    z-index: 10; /* Ensure header context is above main */
+}
+
+section.image-section-1 { min-height: 311px; }
+main {
+    min-height: 337px;
+    padding: 40px 5%;
+    background-size: cover;
+    background-image: url("images/3a.jpg");
+    position: relative; /* Add position context */
+    z-index: 1; /* Ensure main content is below header/nav */
+}
+section.image-section-2 { min-height: 194px; }
+section.social-media { min-height: 140px; width: 100%; max-width: 434px; margin: 1rem auto; background-size: contain; position: relative; }
+footer { min-height: 308px; display: flex; flex-direction: column; justify-content: flex-end; }
+.image-banner {
+  width: 100%;
+  height: 644px;
+  background-image: url('../images/whoweare.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.sidebar-links {
+  position: absolute;
+  right: 30px;
+  top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 2;
+}
+
+.sidebar-links a {
+  background: #005dbb;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 6px;
+  text-align: center;
+}
+
+
+/* Text Styling */
+main div, main p, main ul, main ol, main h2, main h3 {
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* --- Navigation Restructure --- */
+
+header nav { /* Target nav within header */
+    position: relative; /* Context for hamburger menu */
+    z-index: 1000; /* Ensure nav is above main content */
+}
+
+/* Hamburger Menu Button - Hidden by default, shown on mobile */
+.hamburger-menu {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: #0a4a75;
+    border: 2px solid #1e90ff;
+    color: white;
+    padding: 5px 10px;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 1001; /* Above other header elements */
+    border-radius: 5px;
+}
+
+/* Main Navigation List - Base Styles (Mobile First - Hidden Initially) */
+#main-nav-list {
+    display: none; /* Hidden by default on mobile */
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
+    position: absolute;
+    top: 50px; /* Position below hamburger */
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.95);
+    flex-direction: column;
+    align-items: center;
+    z-index: 1000; /* Above main content */
+    gap: 5px;
+    border-bottom: 2px solid #1e90ff;
+}
+
+#main-nav-list.mobile-nav-open {
+    display: flex; /* Show when hamburger is clicked */
+}
+
+#main-nav-list li {
+    width: 90%;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+#main-nav-list li a {
+    display: block;
+    padding: 10px;
+    background-color: #0a4a75;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 14px;
+    border: 2px solid #1e90ff;
+    white-space: nowrap;
+}
+
+#main-nav-list li a:hover {
+    background-color: #2962ff;
+    color: #fff;
+}
+
+/* Desktop Navigation Styles (Overrides Mobile with !important) */
+@media (min-width: 769px) { /* Apply styles for screens wider than 768px */
+    .hamburger-menu {
+        display: none !important; /* FORCE hamburger hidden on desktop */
+    }
+
+    #main-nav-list {
+        display: flex !important; /* FORCE nav list visible as flex on desktop */
+        position: static !important; /* FORCE static positioning */
+        flex-direction: row !important; /* FORCE horizontal layout */
+        justify-content: center !important;
+        background-color: transparent !important; /* FORCE no background */
+        border-bottom: none !important; /* FORCE no border */
+        padding: 0 !important;
+        padding-bottom: 10px !important; /* Original padding */
+        gap: 10px !important;
+    }
+
+    #main-nav-list li {
+        width: auto !important; /* Reset width */
+        margin-bottom: 0 !important; /* Reset margin */
+    }
+
+    #main-nav-list li a {
+        display: inline-block !important; /* Reset display */
+        padding: 8px 15px !important; /* Original padding */
+        font-size: 14px !important; /* Original font size */
+    }
+}
+
+/* --- End Navigation Restructure --- */
+
+
+/* Footer Navigation */
+footer nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+    padding-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+footer nav ul li a {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #0a4a75;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 12px;
+    border: 2px solid #1e90ff;
+    white-space: nowrap;
+}
+
+footer nav ul li a:hover {
+    background-color: #2962ff;
+    color: #fff;
+}
+
+/* Sidebar-like links (on image 2.jpg) */
+.sidebar-links {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.sidebar-links a {
+    display: block;
+    padding: 10px 15px;
+    background-color: #0a4a75;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 14px;
+    border: 2px solid #1e90ff;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.sidebar-links a:hover {
+    background-color: #2962ff;
+    color: #fff;
+}
+
+/* Social Media Links */
+section.social-media a {
+    display: block;
+    position: absolute;
+    width: 20px; /* Adjust size as needed */
+    height: 20px; /* Adjust size as needed */
+    background-size: contain; /* Ensures the icon fits within the element */
+    text-indent: -9999px; /* Keeps text hidden */
+    overflow: hidden;
+}
+
+/* Responsive Adjustments (Keep other non-nav adjustments) */
+
+/* Tablet & Smaller Desktop */
+@media (max-width: 903px) {
+    .container { max-width: 100%; }
+    header { min-height: 120px; }
+    section.image-section-1 { min-height: 250px; }
+    footer { min-height: 250px; }
+
+    /* Keep sidebar link adjustments if needed */
+    .sidebar-links {
+        position: static;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 10px;
+        background-color: rgba(0,0,0,0.5);
+    }
+
+    main div, main p, main ul, main ol, main h2, main h3 { font-size: 16px; max-width: 95%; }
+    footer nav ul { flex-direction: row; }
+}
+
+/* Mobile & Tablet (Keep other non-nav adjustments) */
+@media (max-width: 768px) {
+    /* Hamburger is shown via its base style + this media query */
+    .hamburger-menu {
+        display: block; /* Show hamburger on mobile */
+    }
+
+    /* Nav list styles are handled by base + .mobile-nav-open */
+
+    header { min-height: 80px; } /* Adjust header height */
+    section.image-section-1 { min-height: 200px; }
+    footer { min-height: auto; padding-bottom: 10px; }
+
+    .sidebar-links {
+        flex-direction: column;
+        align-items: center;
+    }
+    .sidebar-links a {
+        width: auto;
+        max-width: 70%;
+        margin-bottom: 3px;
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+
+    footer nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    footer nav ul li {
+        width: auto;
+        max-width: 70%;
+        text-align: center;
+        margin-bottom: 3px;
+    }
+    footer nav ul li a {
+        display: block;
+        padding: 4px 8px;
+        font-size: 11px;
+    }
+
+    main div, main p, main ul, main ol, main h2, main h3 { font-size: 14px; }
+}
+
+/* Utility classes */
+.bg-black { background-color: #000; }
+.text-gray-300 { color: #CCCCCC; }
+.font-trebuchet { font-family: "Trebuchet MS", Arial, Helvetica, sans-serif; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.relative { position: relative; }
+
+/* Page Specific Styles */
+
+/* Title Section - Common style for pages with title banners */
+.title-section {
+    min-height: 57px;
+    background-size: contain; /* Ensure full title image is visible */
+    background-repeat: no-repeat;
+    background-position: center center;
+    /* border: 1px solid red; */ /* Diagnostic border - remove later */
+}
+
+/* Styles specific to AboutUs page */
+.page-about main ul { list-style: disc; padding-left: 40px; text-align: left; }
+.page-about main ul ul { list-style: circle; padding-left: 20px; }
+.page-about main li { margin-bottom: 0.8rem; }
+
+/* Styles specific to OurServices page */
+.page-services main h2 { font-size: 28px; font-family: "Trebuchet MS", Arial, Helvetica, sans-serif; color: #2387bb; margin-bottom: 1.5rem; text-align: center; }
+.page-services main h3 { color: #2387bb; font-size: 22px; margin-top: 2rem; margin-bottom: 1rem; text-align: center; }
+.page-services main ul { list-style: none; padding: 0; text-align: center; margin-bottom: 1rem; }
+.page-services main ul li { font-size: 21px; line-height: 1.5; margin-bottom: 0.5rem; }
+@media (max-width: 600px) {
+    .page-services main ul li { font-size: 18px; }
+    .page-services main h2 { font-size: 24px; }
+    .page-services main h3 { font-size: 20px; }
+}
+
+/* Styles specific to ContactUs page */
+.page-contact .contact-info { text-align: center; font-size: 20px; line-height: 1.6; margin: 2rem auto; max-width: 90%; }
+.page-contact .contact-info p { margin-bottom: 0.8rem; }
+.page-contact .contact-info a { color: #2387bb; text-decoration: underline; }
+.page-contact .map-container { text-align: center; margin: 2rem auto; }
+.page-contact .map-container img { max-width: 100%; height: auto; border: 1px solid #555; }
+@media (max-width: 768px) { .page-contact .contact-info { font-size: 18px; } }
+@media (max-width: 600px) { .page-contact .contact-info { font-size: 16px; } }
+
+/* Styles specific to MissionStatement page */
+.page-mission .mission-content { text-align: center; font-size: 20px; line-height: 1.6; margin: 2rem auto; max-width: 90%; min-height: 100px; padding: 1rem; }
+.page-mission .mission-content .core-values { color: #2387bb; font-size: 20px; font-weight: bold; margin-top: 1rem; margin-bottom: 0.5rem; }
+.page-mission .mission-content img {
+    display: block;
+    margin: 2rem auto;
+    max-width: 188px;
+    height: auto;
+    /* border: 1px solid lime; */ /* Diagnostic border - remove later */
+}
+@media (max-width: 768px) { .page-mission .mission-content { font-size: 18px; } }
+@media (max-width: 600px) { .page-mission .mission-content { font-size: 16px; } .page-mission .mission-content .core-values { font-size: 18px; } }
+
+/* Styles specific to OurHistory page */
+.page-history .history-content { text-align: center; font-size: 20px; line-height: 1.6; margin: 2rem auto; max-width: 90%; min-height: 100px; padding: 1rem; }
+.page-history .history-content img { display: block; margin: 2rem auto; max-width: 188px; height: auto; }
+@media (max-width: 768px) { .page-history .history-content { font-size: 18px; } }
+@media (max-width: 600px) { .page-history .history-content { font-size: 16px; } }
+
+/* Styles specific to WhoWeAre page */
+.page-who .who-we-are-content { text-align: left; font-size: 18px; line-height: 1.6; margin: 2rem auto; max-width: 90%; min-height: 100px; padding: 1rem; }
+.page-who .who-we-are-content h2 { color: #2387bb; font-size: 24px; margin-bottom: 0.5rem; text-align: center; }
+.page-who .who-we-are-content p, .page-who .who-we-are-content ol { margin-bottom: 1.5rem; }
+.page-who .who-we-are-content ol { padding-left: 40px; list-style: decimal; }
+.page-who .who-we-are-content li { margin-bottom: 0.5rem; }
+@media (max-width: 768px) { .page-who .who-we-are-content { font-size: 16px; } .page-who .who-we-are-content h2 { font-size: 22px; } }
+@media (max-width: 600px) { .page-who .who-we-are-content { font-size: 14px; } .page-who .who-we-are-content h2 { font-size: 20px; } }
+
+/* Styles specific to WhyHireUs page */
+.page-why .why-hire-us-content { text-align: center; font-size: 20px; line-height: 1.6; margin: 2rem auto; max-width: 90%; min-height: 100px; padding: 1rem; }
+.page-why .why-hire-us-content h2 { color: #2387bb; font-size: 24px; margin-bottom: 1rem; }
+.page-why .why-hire-us-content img {
+    display: block;
+    margin: 2rem auto;
+    max-width: 188px;
+    height: auto;
+    /* border: 1px solid yellow; */ /* Diagnostic border - remove later */
+}
+@media (max-width: 768px) { .page-why .why-hire-us-content { font-size: 18px; } .page-why .why-hire-us-content h2 { font-size: 22px; } }
+@media (max-width: 600px) { .page-why .why-hire-us-content { font-size: 16px; } .page-why .why-hire-us-content h2 { font-size: 20px; } }
+
+/* Carousel Styles */
+.carousel-container {
+    position: relative;
+    min-height: 311px;
+    overflow: hidden;
+}
+
+.carousel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 311px;
+}
+
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background-color: rgba(0, 93, 187, 0.7);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s;
+}
+
+.carousel-btn:hover {
+    background-color: rgba(0, 93, 187, 1);
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+.carousel-indicators {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.indicator.active {
+    background-color: #005dbb;
+}
+
+/* Homepage specific adjustments */
+.page-index main {
+    margin-top: 0; /* Reset margin since carousel now takes that space */
+    padding-top: 30px; /* Keep padding top */
+    padding-bottom: 30px;
+}
+
+/* Ensure sidebar links are above carousel */
+.image-section-1 .sidebar-links {
+    z-index: 20;
+}
+
+/* More Link Style */
+.more-link {
+    color: red;
+    text-decoration: underline;
+    font-weight: bold;
+    display: inline-block; /* Or block depending on placement */
+    margin-top: 10px; /* Adjust spacing */
+}
+
+/* Industries Slider Styles */
+.industries-slider-section {
+    background-color: #0a4a75;
+    padding: 15px 0;
+    position: relative;
+    margin-bottom: 20px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.industries-slider-container {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.industries-title {
+    color: white;
+    padding: 0 20px 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    border-bottom: 2px solid #1e90ff;
+}
+
+.industries-slider {
+    position: relative;
+    height: 40px;
+    overflow: hidden;
+}
+
+.industries-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.industries-slide.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+.industries-row {
+    display: flex;
+    width: max-content;
+    animation: scroll-left 30s linear infinite;
+    padding: 0 20px;
+}
+
+.industry-item {
+    white-space: nowrap;
+    margin-right: 30px;
+    color: white;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.industries-slider-controls {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+    z-index: 10;
+}
+
+.slider-btn {
+    background-color: rgba(0, 93, 187, 0.7);
+    color: white;
+    border: 2px solid #1e90ff;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s;
+}
+
+.slider-btn:hover {
+    background-color: rgba(0, 93, 187, 1);
+}
+
+/* Responsive adjustments for industries slider */
+@media (max-width: 768px) {
+    .industry-item {
+        font-size: 13px;
+        margin-right: 20px;
+    }
+    
+    .industries-title {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .industry-item {
+        font-size: 12px;
+        margin-right: 15px;
+    }
+    
+    .industries-title {
+        font-size: 13px;
+    }
+}
+
+
+.page-why header {
+    background-image: url("images/Header.jpg");
+    min-height: 120px;
+}
+
+.page-why .image-section-1 {
+    background-image: url("images/2.jpg");
+}
+
+.page-why main {
+    background-image: url("images/3a.jpg");
+}
+
+.page-why .title-section {
+    background-image: url("images/Title-Why-Hire-Us.jpg");
+    min-height: 80px;
+}
+
+.page-why .image-section-2 {
+    background-image: url("images/4.jpg");
+    min-height: 150px;
+}
+
+.page-why footer {
+    background-image: url("images/5.jpg");
+}
