@@ -11,8 +11,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      # Skip any Node.js related steps
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@v4
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          branch: gh-pages
-          folder: twinsec_modern_final_local
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./twinsec_modern_final_local
