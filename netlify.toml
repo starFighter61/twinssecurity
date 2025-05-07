@@ -1,5 +1,5 @@
 [build]
-  publish = "."
+  publish = "./twinsec_modern_final_local"
   command = ""
 
 [[redirects]]
